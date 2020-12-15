@@ -18,12 +18,20 @@ pip install -r requirements.txt
 ```
 
 Then download the pretrained weights of yolo3 from https://pjreddie.com/media/files/yolov3.weights
+
+Note: when tested on Linux Mint 20, issues were encountered with Tensorflow and OpenCV. The following adaptations were required to run the code:
+```bash
+pip install tensorflow
+pip install opencv-python
+```
+
+
 ## Human Detection in Videos
 
 To detect people in <code>\<video_file.mov></code>, simply run:
 
 ```bash
-python yolo3_process_video.py -w yolov3.weights -i <video_file.mov>
+python yolo3_object_detection_video.py -w yolov3.weights -i <video_file.mov>
 ```
 This will output a video named <code>output.avi</code> - a replica of the original video, with labelled boxes around observed humans in the video.
 

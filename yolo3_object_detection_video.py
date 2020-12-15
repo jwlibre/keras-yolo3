@@ -412,14 +412,7 @@ def _main_(args):
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
     fps = 40
-
-    if platform.system() == 'Darwin':
-        out = cv2.VideoWriter('output.avi',cv2.VideoWriter_fourcc('M','J','P','G'), fps, (frame_width,frame_height))
-
-    else:
-        # Define the codec and create VideoWriter object
-        fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
+    out = cv2.VideoWriter('output.avi',cv2.VideoWriter_fourcc('M','J','P','G'), fps, (frame_width,frame_height))
 
     while(cap.isOpened()):
         ret, frame = cap.read()
