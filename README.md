@@ -1,3 +1,32 @@
+## Notes on fork jwlibre/keras-yolo3
+
+This repository has been forked from experiencor/keras-yolo3, and adapted specifically to the purpose of detecting humans in a video.
+This fork contains the following adjustments to the original repository:
+- Duplicated and adapted the script yolo3_one_file_to_detect_them_all.py to run on video files, encapsulated in the new script yolo3_object_detection_video.py
+- README and .gitignore adjusted accordingly.
+
+## Installing
+
+To install the dependencies, run
+```bash
+pip install -r requirements.txt
+```
+
+Then download the pretrained weights of yolo3 from https://pjreddie.com/media/files/yolov3.weights
+## Human Detection in Videos
+
+To detect people in <code>\<video_file.mov></code>, simply run:
+
+```bash
+python yolo3_process_video.py -w yolov3.weights -i <video_file.mov>
+```
+This will output a video named <code>output.avi</code> - a replica of the original video, with labelled boxes around observed humans in the video.
+
+Original README continues below.
+<br>jwlibre, 15/12/2020
+
+---
+
 # YOLO3 (Detection, Training, and Evaluation)
 
 ## Dataset and Model
@@ -33,11 +62,11 @@ It has been tested to work with Python 2.7.13 and 3.5.3.
 
 Grab the pretrained weights of yolo3 from https://pjreddie.com/media/files/yolov3.weights.
 
-```python yolo3_one_file_to_detect_them_all.py -w yolo3.weights -i dog.jpg``` 
+```python yolo3_one_file_to_detect_them_all.py -w yolo3.weights -i dog.jpg```
 
 ## Training
 
-### 1. Data preparation 
+### 1. Data preparation
 
 Download the Raccoon dataset from from https://github.com/experiencor/raccoon_dataset.
 
@@ -50,7 +79,7 @@ Organize the dataset into 4 folders:
 + valid_image_folder <= the folder that contains the validation images.
 
 + valid_annot_folder <= the folder that contains the validation annotations in VOC format.
-    
+
 There is a one-to-one correspondence by file name between images and annotations. If the validation set is empty, the training set will be automatically splitted into the training set and validation set using the ratio of 0.8.
 
 Also, if you've got the dataset split into 2 folders such as one for images and the other one for annotations and you need to set a custom size for the validation set, use `create_validation_set.sh` script to that. The script expects the following parameters in the following order:
@@ -77,7 +106,7 @@ The configuration file is a json file, which looks like this:
     "train": {
         "train_image_folder":   "/home/andy/data/raccoon_dataset/images/",
         "train_annot_folder":   "/home/andy/data/raccoon_dataset/anns/",      
-          
+
         "train_times":          10,             # the number of time to cycle through the training set, useful for small datasets
         "pretrained_weights":   "",             # specify the path of the pretrained weights, but it's fine to start from scratch
         "batch_size":           16,             # the number of images to read in each batch
