@@ -1,6 +1,11 @@
+# Object Recognition in Video Files using YOLO3
+
+<img src='sample_output.gif'></img>
+<caption><i>Example output from </i><code>yolo3_object_detection_video.py</code></caption>
+
 ## Notes on fork jwlibre/keras-yolo3
 
-This repository has been forked from experiencor/keras-yolo3, and adapted specifically to the purpose of detecting humans in a video.
+This repository has been forked from experiencor/keras-yolo3, and adapted specifically to the purpose of detecting humans in a video clip.
 This fork contains the following adjustments to the original repository:
 - Duplicated and adapted the script yolo3_one_file_to_detect_them_all.py to run on video files, encapsulated in the new script yolo3_object_detection_video.py
 - README and .gitignore adjusted accordingly.
